@@ -3,65 +3,16 @@ import "../styles/nav.css";
 import Account from "../pages/Account";
 import React, { useContext } from "react";
 import { UserContext } from "../components/UserContext";
+import TopBar from "./TopBar";
+import SideBar from "./SideBar";
 
 function Layout({ children }) {
   const { imageSrc, fullName } = useContext(UserContext); // Access context
 
   return (
     <>
-      <div className="nav-top">
-        <div className="top-content">
-          <div className="inventory-name">MK Inventory Ledger</div>
-          <div className="user_top-bar">
-            <div className="user-dropdown">
-              <button className="user-settings">
-                <img
-                  src={imageSrc} // Use imageSrc from context
-                  className="user-logo"
-                  alt="User Avatar"
-                />
-              </button>
-              <div className="dropdown-content">
-                <a href="/account">Edit Profile</a>
-                <a href="/">Log Out</a>
-              </div>
-            </div>
-            <b>{fullName}</b> {/* You can display other user data here */}
-          </div>
-        </div>
-      </div>
-
-      <div className="side-bar">
-        <div className="side-content">
-          <div className="logo-section">
-            <a href="/dashboard">
-              <div className="logo-part"></div>
-            </a>
-            <h3 className="welcome-text">Welcome User!</h3>
-          </div>
-
-          <div className="links">
-            <div className="link-item">
-              <a href="/dashboard">Dashboard</a>
-            </div>
-            <div className="link-item">
-              <a href="/products">Products</a>
-            </div>
-            <div className="link-item">
-              <a href="/stocks">Stocks</a>
-            </div>
-            <div className="link-item">
-              <a href="/sales">Sales</a>
-            </div>
-            <div className="link-item">
-              <a href="/account">Account</a>
-            </div>
-            <div className="link-item">
-              <a href="/about">About</a>
-            </div>
-          </div>
-        </div>
-      </div>
+      <TopBar />
+      <SideBar />
 
       <div className="content-section fade-in">{children}</div>
     </>
