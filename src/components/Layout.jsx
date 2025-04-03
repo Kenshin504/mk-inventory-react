@@ -63,7 +63,7 @@ function Layout({ children }) {
         </div>
       </div>
 
-      <div className="content-section">{children}</div>
+      <div className="content-section fade-in">{children}</div>
     </>
   );
 }

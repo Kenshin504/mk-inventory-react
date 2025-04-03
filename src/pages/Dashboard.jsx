@@ -30,7 +30,7 @@ function Dashboard() {
   return (
     <Layout>
       <h1>Sales Report</h1>
-      <div className="container-dashboard">
+      <div className="container-dashboard fade-in">
         <div className="card-graph">
           <BarCharts stockData={stocks} />
         </div>
