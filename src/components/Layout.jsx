@@ -34,7 +34,9 @@ function Layout({ children }) {
       <div className="side-bar">
         <div className="side-content">
           <div className="logo-section">
-            <div className="logo-part"></div>
+            <a href="/dashboard">
+              <div className="logo-part"></div>
+            </a>
             <h3 className="welcome-text">Welcome User!</h3>
           </div>
 

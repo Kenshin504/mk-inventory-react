@@ -1,22 +1,53 @@
+import { useState, useEffect } from "react";
 import Layout from "../components/Layout";
+import BarCharts from "../components/BarChart";
+import PieCharts from "../components/PieChart";
+import AreaCharts from "../components/AreaChart";
+import LineCharts from "../components/LineChart";
+import "../styles/pages.css";
 
 function Dashboard() {
-  return (
-    <>
-      <Layout>
-        <div>
-          <b className="content-header">Dashboard</b>
-          <div className="dashboard-container">
-            <div className="dashboard-content"><div className="dashboard-subheader">Total Transactions:</div>₱ XXXX.00</div>
-            <div className="dashboard-content"><div className="dashboard-subheader">Total Customers Served:</div></div>
-            <div className="dashboard-content"><div className="dashboard-subheader">Total Expenses:</div>₱ XXXX.00</div>
-            <div className="dashboard-content"><div className="dashboard-subheader">Total Inflows:</div>₱ XXXX.00</div>
+  const [stocks, setStocks] = useState([
+    { name: "Product A", stock: 120 },
+    { name: "Product B", stock: 90 },
+    { name: "Product C", stock: 60 },
+    { name: "Product D", stock: 150 },
+  ]);
 
-            <div className="dashboard-content"><div className="dashboard-subheader">Products low on Stock:</div></div>
-          </div>
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setStocks((prevStocks) =>
+        prevStocks.map((item) => ({
+          ...item,
+          stock: Math.floor(Math.random() * 2000),
+        }))
+      );
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <Layout>
+      <h1>Sales Report</h1>
+      <div className="container-dashboard">
+        <div className="card-graph">
+          <BarCharts stockData={stocks} />
         </div>
-      </Layout>
-    </>
+
+        <div className="card-graph">
+          <PieCharts stockData={stocks} />
+        </div>
+
+        <div className="card-graph">
+          <AreaCharts stockData={stocks} />
+        </div>
+
+        <div className="card-graph">
+          <LineCharts stockData={stocks} />
+        </div>
+      </div>
+    </Layout>
   );
 }
 
