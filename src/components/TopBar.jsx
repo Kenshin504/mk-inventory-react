@@ -1,4 +1,5 @@
 import "../styles/nav.css";
+import { Link } from "react-router-dom";
 import React, { useContext } from "react";
 import { UserContext } from "../components/UserContext";
 
@@ -19,7 +20,7 @@ function TopBar() {
               />
             </button>
             <div className="dropdown-content">
-              <a href="/account">Edit Profile</a>
+              <Link to="/account">Edit Profile</Link>
               <a href="/">Log Out</a>
             </div>
           </div>
